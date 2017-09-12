@@ -145,7 +145,7 @@ if (result.Error != nil) { panic(result.Error) }
 
 You have three options for allowing barkup to connect to your DB.
 
-Use the Password struct field to set password as the PGPASSWORD enviroment variable.
+Use the `Password` struct field to set password as the `PGPASSWORD` environment variable.
 
 Add a [`~/.pgpass`](http://www.postgresql.org/docs/9.3/static/libpq-pgpass.html) for account that will run the backup program.
 

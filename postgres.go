@@ -35,7 +35,7 @@ func (x Postgres) Export() *ExportResult {
 	result.Path = fmt.Sprintf(`bu_%v_%v.sql.tar.gz`, x.DB, time.Now().Unix())
 	options := append(x.dumpOptions(), "-Fc", fmt.Sprintf(`-f%v`, result.Path))
 
-	// Adds a password varible to exec enviroment.
+	// Adds a password varible to exec environment.
 	// Can be used instead of ~/.pgpass
 	args := os.Environ()
 	if x.Password != "" {
