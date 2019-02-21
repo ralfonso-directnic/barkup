@@ -35,7 +35,7 @@ type MySQL struct {
 func (x MySQL) Export() *ExportResult {
 	result := &ExportResult{MIME: "application/x-tar"}
 
-	dumpPath := fmt.Sprintf(`bu_%v_%v.sql`, x.DB, time.Now().Unix())
+	dumpPath := fmt.Sprintf(`%v_%v.sql`, x.DB, time.Now().Unix())
 
 	options := append(x.dumpOptions(), fmt.Sprintf(`-r%v`, dumpPath))
 	out, err := exec.Command(MysqlDumpCmd, options...).Output()
