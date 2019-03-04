@@ -30,9 +30,10 @@ type RethinkDB struct {
 // Export produces a gzip compressed tarball archive of the rethink cluster (or targetted DBs/tables)
 func (x RethinkDB) Export() *ExportResult {
 	result := &ExportResult{MIME: "application/x-tar"}
-	result.Path = fmt.Sprintf(`bu_%v_%v.tar.gz`, x.Name, time.Now().Unix())
+	fileSuffix := time.Now().Format("2006_01_02_15_04_05")
+	result.Path = fmt.Sprintf(`bu_%v_%s.tar.gz`, x.Name, fileSuffix)
 	options := append(x.dumpOptions(), fmt.Sprintf(`-f%v`, result.Path))
-	out, err := exec.Command(RethinkCmd, options...).Output()
+	out, err := exec.Command(RethinkCmd, options...).CombinedOutput()
 	if err != nil {
 		result.Error = makeErr(err, string(out))
 	}
