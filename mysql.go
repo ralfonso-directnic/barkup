@@ -26,6 +26,8 @@ type MySQL struct {
 	User string
 	// DB Password
 	Password string
+	// Use AWS CLI to upload to S3
+	UseAwsCli bool
 	// Extra mysqldump options
 	// e.g []string{"--extended-insert"}
 	Options []string

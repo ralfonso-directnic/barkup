@@ -37,6 +37,7 @@ func main() {
         Bucket:       "backups",
         AccessKey:    "*************",
         ClientSecret: "**********************",
+        UseAwsCli:    false, // Must have AWS CLI installed
     }
 
     // Export the database, and send it to the
