@@ -221,7 +221,7 @@ err := someExportResult.To("data/", s3)
 * ap-northeast-1
 * sa-east-1
 
-** Custom Region **
+**Custom Region**
 
 If you have a s3 like api you can access that is not amazon add a custom region
 
