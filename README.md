@@ -221,3 +221,32 @@ err := someExportResult.To("data/", s3)
 * ap-northeast-1
 * sa-east-1
 
+** Custom Region **
+
+If you have a s3 like api you can access that is not amazon add a custom region
+
+```
+myregion := aws.Region{
+	"myregion",
+	"",
+	"https://mys3.endpoint.com",
+	"",
+	false,
+	false,
+	"",
+	"",
+	"",
+	"",
+	aws.SignV2,
+}
+
+s3 := &barkup.S3{
+  Region: "myregion",
+  Bucket: "backups",
+  AccessKey: "XXXXXXXXXXXXX",
+  ClientSecret: "XXXXXXXXXXXXXXXXXXXXX",
+}
+
+s3.CustomRegion(myregion)
+err := someExportResult.To("data/", s3)
+```
