@@ -32,6 +32,45 @@ type S3 struct {
 	UseAwsCli bool
 }
 
+//add a custom aws region for services that have a s3 like api
+/*
+
+type Region struct {
+	Name                 string // the canonical name of this region.
+	EC2Endpoint          string
+	S3Endpoint           string
+	S3BucketEndpoint     string // Not needed by AWS S3. Use ${bucket} for bucket name.
+	S3LocationConstraint bool   // true if this region requires a LocationConstraint declaration.
+	S3LowercaseBucket    bool   // true if the region requires bucket names to be lower case.
+	SDBEndpoint          string
+	SNSEndpoint          string
+	SQSEndpoint          string
+	IAMEndpoint          string
+	Sign                 Signer // Method which will be used to sign requests.
+}
+
+	Region{
+	"us-east-1",
+	"https://ec2.us-east-1.amazonaws.com",
+	"https://s3.amazonaws.com",
+	"",
+	false,
+	false,
+	"https://sdb.amazonaws.com",
+	"https://sns.us-east-1.amazonaws.com",
+	"https://sqs.us-east-1.amazonaws.com",
+	"https://iam.amazonaws.com",
+	SignV2,
+}
+	
+
+*/
+
+func (x *S3) CustomRegion(reg aws.Region) {
+	aws.Regions[reg.Name] = reg
+}
+
+
 // Store puts an `ExportResult` struct to an S3 bucket within the specified directory
 func (x *S3) Store(result *ExportResult, directory string) *Error {
 
