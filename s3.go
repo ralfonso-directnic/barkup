@@ -67,7 +67,7 @@ type Region struct {
 */
 
 func (x *S3) CustomRegion(reg aws.Region) {
-	aws.Region[reg.Name] = reg
+	aws.Regions[reg.Name] = reg
 }
 
 
